@@ -1,20 +1,9 @@
 # Personal copy for Python
 
+My hints for specific tasks are included in epi_judge_python on top of the corresponding python file.
+for the full fledged original version (no hints included) visit https://github.com/adnanaziz/EPIJudge
+ 
 # EPI Judge 
-
-## Introduction
-
-EPI Judge consists of the following:
-
-- **Stub programs** for each problem in our book in Python, Java, and C++
-- **Test-cases** that cover common corner-case and performance bugs
-- A **framework** for running these tests on your implementation on your machine
-
-## Installation
-
-Here's how to download the judge:
-
-    $ git clone https://github.com/adnanaziz/EPIJudge.git
 
 ## Running the judge using IDEs
 
@@ -30,7 +19,7 @@ Here's how to download the judge:
     $ python3 <program_name>.py
 
 
-## Problem to Program Mapping
+## Problem to Program Mapping / only for PYTHON
 
 | Problem | Python
 | ------ | ------
