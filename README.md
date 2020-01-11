@@ -1,4 +1,6 @@
-# EPI Judge
+# Personal copy of EPI judge for Python
+
+# EPI Judge -   
 
 ## Introduction
 
