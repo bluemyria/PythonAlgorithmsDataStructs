@@ -1,14 +1,26 @@
 from test_framework import generic_test
 
-
+# 8.8 Implement a Queue using stacks
+# How would you implement a queue given a library implementing stacks?
+# Hint: lt is impossible to solve this problem with a single stack.
 class Queue:
+    # SOS !!! check if Stack is empty before popping
+    def __init__(self):
+        self._enq = []
+        self._deq = []
+
     def enqueue(self, x):
-        # TODO - you fill in here.
+        self._enq.append(x)
         return
 
     def dequeue(self):
-        # TODO - you fill in here.
-        return 0
+        if not self._deq:
+            while self._enq:
+                self._deq.append(self._enq.pop())
+        if self._deq:
+            return self._deq.pop()
+        else:
+            return None
 
 
 def queue_tester(ops):

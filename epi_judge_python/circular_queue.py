@@ -1,23 +1,58 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 
-
+# 8.7 Implement a Circular Queue
+# Implement a queue API using an array for storing elements. Your API should include a constructor
+# function which takes as argument the initial capacity of the queue, enqueue and dequeue functions,
+# and a function which returns the number of elements stored. Implement dynamic resizing to
+# support storing an arbitrarily large number of elements.
+# Hint:Track the head and tail. How can you differentiate a full queue from an empty one?
 class Queue:
+    # SOS!!! Usage of scale Factor, I placed the -1 in the wrong place
+    # SOS!!! check what makes the elements to appear consecutively 
+    # self._entries = self._entries[self._head:] + self._entries[:self._head]
+    # SOS!!! self._tail shows the next empty position and always exists!!
+    # because resizing happens before enqueueing!!!
+    # SOS!!! moving the head and the tail (+1) only w/ % len(array) in case they have
+    # to be "rewinded"        
+    SCALE_FACTOR = 2
+    
     def __init__(self, capacity):
-        # TODO - you fill in here.
-        return
+        self._entries = [None] * capacity
+        self._head = self._tail = 0
+        self._used_size = 0
 
     def enqueue(self, x):
-        # TODO - you fill in here.
-        return
+        # print("enqueue\n")
+        #  resize
+        if self._used_size == len(self._entries):
+            # print("resize\n")
+            self._entries = self._entries[self._head:] + self._entries[:self._head]
+            self._head = 0
+            self._tail = self._used_size
+            self._entries += [None] * (Queue.SCALE_FACTOR -1) * len(self._entries)
+        
+        self._entries[self._tail] = x
+        self._used_size += 1
+        self._tail = (self._tail + 1) % len(self._entries)
+        # print("\n-----------", self._entries)
+        # print(x, self._head, self._tail, self._used_size)
 
     def dequeue(self):
-        # TODO - you fill in here.
-        return 0
+        # print("dequeue\n")
+        x = self._entries[self._head]
+        self._head = (self._head + 1) % len(self._entries)
+        self._used_size -= 1
+        # print("\n-----------", self._entries)
+        # print(self._head, self._tail, self._used_size)
+        return x
 
     def size(self):
-        # TODO - you fill in here.
-        return 0
+        # print("size\n")
+        # print("\n-----------", self._entries)
+        # print(self._head, self._tail, self._used_size)
+
+        return self._used_size
 
 
 def queue_tester(ops):
