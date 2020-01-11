@@ -1,9 +1,18 @@
 from test_framework import generic_test
 
-
+# 11.3 Search a cyclically Sorted Array
+# Design art O(logn) algorithm for finding the position of the smallest element in a 
+# cyclically sorted array. Assume all elements are distinct. 
 def search_smallest(A):
-    # TODO - you fill in here.
-    return 0
+    left, right = 0 , len(A)-1
+
+    while left < right:
+        mid = (left + right)//2
+        if A[mid] > A[right]:
+            left = mid + 1
+        else:
+            right = mid
+    return left
 
 
 if __name__ == '__main__':
