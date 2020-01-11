@@ -1,6 +1,6 @@
-# Personal copy of EPI judge for Python
+# Personal copy for Python
 
-# EPI Judge -   
+# EPI Judge 
 
 ## Introduction
 
@@ -15,23 +15,12 @@ EPI Judge consists of the following:
 Here's how to download the judge:
 
     $ git clone https://github.com/adnanaziz/EPIJudge.git
-If you do not have `git`, here's a good [tutorial](https://www.atlassian.com/git/tutorials/install-git) on installing git itself.
 
 ## Running the judge using IDEs
-
-Check out these one minute videos to see how easy it is to get started with the judge.
 
 ### Python
 
 [PyCharm](https://youtu.be/ImD_iI-uGYo), [Eclipse](https://youtu.be/rZ1qqwEXwQY), [NetBeans](https://youtu.be/Z41jW1TyZwY)
-
-### Java
-
-[IntelliJ IDEA](https://youtu.be/1BzHUpluQHM), [Eclipse](https://youtu.be/i9uz9Zazo0A)
-
-### C++
-
-[CLion](https://youtu.be/aHPDApyyYEg), [Visual Studio 2017](https://youtu.be/hgd8IIQpBEE)
 
 
 ## Running the judge from the command line
@@ -40,106 +29,6 @@ Check out these one minute videos to see how easy it is to get started with the 
 
     $ python3 <program_name>.py
 
-#### Java
-
-Use the [`Makefile`](https://github.com/adnanaziz/EPIJudge/blob/master/epi_judge_java/Makefile). 
-
-Compile and run a specific program:
-
-    $ make <program_name> 
-Example:
-
-    $ make Anagrams
-Compile and run the last program that you edited:
-
-	$ make
-
-### C++
-
-You can manually compile and run all programs by directly invoking GCC and Clang. 
-
-    $ g++ -pthread -std=c++14 -O3 -o anagrams anagrams.cc
-You can also use the provided Makefile: `make <program_name>`. You can also use CMake with the provided CMakeLists.txt file. 
-
-	$ make 
-The default Makefile target is the last edited file.
-
-    $ make anagrams
-
-
-## FAQ
-
-- How can I contact the authors? 
-
-Please feel free to send us questions and feedback -  `adnan.aziz@gmail.com` and `tsung.hsien.lee@gmail.com`
-
-- Help, my EPIJudge is not working, what should I do?
-
-If you do have issues, e.g., with install or with buggy tests, feel free to reach out to us via email. Please be as detailed as you can: the ideal is if you can upload a screencast video of the issue to youtube; failing that, please upload screenshots.  The more detailed the description of the problem and your environment (OS, language version, IDE and version), the easier it’ll be for us to help you.
-
-- I'm new to programming, and don't have any kind of development environment, what should I do?
-
-The IntelliJ Integrated Development environments described above are best-in-class, and have free versions that will work fine for the EPI Judge. They do not include the compilers. You can get the Java development environment from [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), and the Python development environment from [Python.org](https://www.python.org/downloads/). For C++, you have multiple options. The simplest is to install [VisualStudio](https://code.visualstudio.com/download), which includes both the IDE and the compiler. Google is a good resource for installation help.
-
-- What compilers are supported for judge?
-  - C++
-    - Linux
-      - **GCC** 5.4.1
-      - **Clang** 4.0
-    - OS X  
-      - **Apple LLVM Clang** 9.0.0
-    - Windows
-      - **Visual Studio** 2017 15.7.0 Preview 6
-        - Release version of VS2017 contains a bug that makes it impossible to compile judge programs
-      - **MinGW** GCC 5.4.0
-      - **LXSS** (Windows Subsystem for Linux) GCC 5.4.0
-  - Java     
-    - **Java** 9
-  - Python
-    - **Python** 3.6
-   
-
-- What compilers are supported for solutions?
-  - C++
-      - Linux
-        - **GCC** 7.0.0
-        - **Clang** 5.0
-      - OS X  
-        - **Apple LLVM Clang** 9.0.0
-      - Windows
-        - **Visual Studio** 2017 15.7.0 Preview 6
-            - Release version of VS2017 contains a bug that makes it impossible to compile judge programs
-        - **MinGW** GCC 7.2.0
-        - **LXSS** (Windows Subsystem for Linux) GCC 7.2.0
-    - Java     
-      - **Java** 9
-    - Python
-      - **Python** 3.6 
-
-Let us know if you managed to compile with an older version.
-
-- What does the UI look like?
-
-Take a look at this screenshot.
-
-<img src="http://elementsofprogramminginterviews.com/img/judge-ide-example.png" width="600px"></img>
-
-- How can I understand the test framework better?
-
-The judge harness is fairly complex (but does not use nonstandard language features or libraries). You are welcome to study it, but we’d advise you against making changes to it (since it will lead to nasty merge conflicts when you update).
-
-- How do I import the C++ project?
-
-If you want to import the project into your favourite IDE, you probably need to create IDE project with [CMake](https://cmake.org/) (no need to do it for CLion, it supports CMake out-of-the-box).
-
-Here is an example recipe for generationg Visual Studio project ([list](https://cmake.org/cmake/help/v3.10/manual/cmake-generators.7.html) of all CMake supported IDEs).
-After installing CMake, open your terminal, go to `epi_judge_cpp` folder and run following commands:
-
-    mkdir vs
-    cd vs
-    cmake -G "Visual Studio 15 2017" ..
-
-Then just open `epi_judge_cpp/vs/epi_judge_cpp.sln` solution with Visual Studio and it will load all EPI programs.
 
 ## Problem to Program Mapping
 
