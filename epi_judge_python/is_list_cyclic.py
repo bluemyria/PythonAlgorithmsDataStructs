@@ -4,10 +4,30 @@ from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
 
-
+# 7.3 Test for cyclicity
+# Write a program that takes the head of a singly linked list and retums null if there does not exist a
+# cycle, and the node at the start of the cycle, if a cycle is present, (You do not know the length of the
+# list in advance.)
 def has_cycle(head):
-    # TODO - you fill in here.
-    return None
+    # SOS!! Don't forget to check if next empty or next.next empty
+    # check if you went out of the loop because of null pointers!!!
+    # check .data!!! not just the pointers-....
+    s = f = head
+    while f and f.next and f.next.next:
+        f = f.next.next
+        s = s.next
+        #print(f,s)
+        if s.data == f.data:
+            break
+    
+    if not f or not f.next or not f.next.next:
+        return None
+    
+    s = head
+    while s.data != f.data:
+        s = s.next
+        f = f.next
+    return s
 
 
 @enable_executor_hook
