@@ -6,9 +6,52 @@ from test_framework.test_utils import enable_executor_hook
 
 RED, WHITE, BLUE = range(3)
 
-
+# 5.1 The Dutch National Flag Problem
+# Write a program that takes an array A and an index i rnto A, and rearranges the elements such
+# that all elements less than A[r] (the "pivot") appear first, followed by elements equal to the pivot,
+# followed by elements greater than the pivot.
 def dutch_flag_partition(pivot_index, A):
     # TODO - you fill in here.
+    # the problem is that the "pivot" appears in several areas, so we
+    # need two passes: one for the elements before the pivot and one
+    # for the ones after 
+    h = len(A)-1
+    l = 0
+    pivot_value = A[pivot_index]
+    
+    print("____________start________________")
+    print(pivot_index, pivot_value)
+    print(A)
+    
+    while l < h and l < len(A) and h >= 0:
+        while A[l] < pivot_value and l < len(A)-1 :
+            l += 1
+        while A[h] >= pivot_value and h > 0:
+            h -= 1
+        #print(l,h)
+        
+        if l < h:
+            A[l], A[h] = A[h], A[l]
+        l += 1
+        h -= 1
+    
+    h = len(A)-1
+    l = 0
+    
+    print("____________zwischenergebnis________________")
+    print(A)
+    
+    while l < h and l < len(A) and h > 0:
+        while A[l] <= pivot_value and l < len(A)-1:
+            l += 1
+        while A[h] > pivot_value and h > 0:
+            h -= 1
+        #print(l,h)
+        if l < h and l < len(A)-1 and h >= 0:
+            A[l],A[h] = A[h],A[l]
+        l += 1
+        h -= 1
+    print(A)
     return
 
 

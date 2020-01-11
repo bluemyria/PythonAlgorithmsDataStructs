@@ -1,4 +1,5 @@
 import functools
+import random
 
 from test_framework import generic_test
 from test_framework.random_sequence_checker import (
@@ -6,10 +7,19 @@ from test_framework.random_sequence_checker import (
     compute_combination_idx, run_func_with_retries)
 from test_framework.test_utils import enable_executor_hook
 
-
+# 5.12 Sample Offline Data
+# Implement an algorithm that takes as input an array of distinct elements 
+# and a size, and returns a subset of the given size of the array elements.
+# All subsets should be equally likely. Return the result in input array itself.
 def random_sampling(k, A):
-    # TODO - you fill in here.
-    return
+    # SOS!! randint includes the last n-1!!!
+    # SOS!! if I want to replace elements in the beginning of an array
+    # I must make sure that I choose "rest" elements that are further to the 
+    # right of the current to-replace element! 
+    l = len(A)
+    for i in range(0,k):
+        m = random.randrange(i, l) # SOS!! randint includes the last n-1!!!
+        A[m], A[i] = A[i], A[m]
 
 
 @enable_executor_hook
