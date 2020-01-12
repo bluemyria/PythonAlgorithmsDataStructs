@@ -1,23 +1,37 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
+import collections
 
-
+# 12.3 Implement an ISBN cache
+# Create a cache for looking up prices of books identified by their ISBN. You implement lookup,
+# insert, and remove methods. Use the Least Recently Used (LRU) policy for cache eviction. If an
+# ISBN is already present, insert should not change the price, but it should update that entry tobe the
+# most recently used entry. Lookup should also update that entry to be the most recently used entry.
 class LruCache:
+    # SOS!!! An OrderedDict is a dictionary subclass that remembers 
+    # the order that keys were first inserted.
+    # .popitem() is LIFO unless you give the param last=True, then it pops FIFO!!!
     def __init__(self, capacity):
-        # TODO - you fill in here.
-        return
-
+        self._isbns = collections.OrderedDict()
+        self._capacity = capacity
+        
     def lookup(self, isbn):
-        # TODO - you fill in here.
-        return 0
+        if isbn not in self._isbns:
+            return -1
+        else:
+            price = self._isbns.pop(isbn)
+            self._isbns[isbn] = price
+        return price
 
     def insert(self, isbn, price):
-        # TODO - you fill in here.
-        return
+        if isbn in self._isbns:
+            price = self._isbns.pop(isbn) 
+        elif len(self._isbns) == self._capacity:
+            self._isbns.popitem(last=False)
+        self._isbns[isbn] = price
 
     def erase(self, isbn):
-        # TODO - you fill in here.
-        return True
+        return self._isbns.pop(isbn, None) is not None
 
 
 def run_test(commands):
