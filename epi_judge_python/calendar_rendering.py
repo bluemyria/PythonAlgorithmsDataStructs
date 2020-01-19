@@ -7,10 +7,22 @@ from test_framework.test_utils import enable_executor_hook
 # Event is a tuple (start_time, end_time)
 Event = collections.namedtuple('Event', ('start', 'finish'))
 
-
+# 13.5 Render a calendar
+# Write a program that takes a set of events, and determines the maximum number 
+# of events that take place concurrently.
+# Example input: [[0, 2], [0, 7], [1, 6], [5, 6]]
 def find_max_simultaneous_events(A):
-    # TODO - you fill in here.
-    return 0
+    # SOS!!! sort by event time, start, stop mixed!!!
+    sim_events, max_sim_events = 0, 0
+    events = [(x[0], True) for x in A ] + [(x[1], False) for x in A ] 
+    events.sort(key = lambda x: x[0])
+    for e in events:
+        if e[1]:
+            sim_events += 1
+            max_sim_events = max(sim_events, max_sim_events)
+        else:
+            sim_events -= 1
+    return max_sim_events
 
 
 @enable_executor_hook
