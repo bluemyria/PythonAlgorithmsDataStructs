@@ -19,7 +19,6 @@ def top_k(k: int, stream):
         #print(min_heap)
         #print("\n")
     # heapq.nlargest returns the same k elements but in reverse order
-    # remember the size of our heap is k!
     return [p for p in heapq.nsmallest(k, min_heap)] 
 
 
