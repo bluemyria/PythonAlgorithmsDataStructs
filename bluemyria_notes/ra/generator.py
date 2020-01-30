@@ -1,0 +1,5 @@
+print("a  ",sum(3 * i  for i in range(5)))
+print("b  ",(3 * i  for i in range(5)))
+print("c  ",type(3 * i  for i in range(5)))
+# '{:.2f}'.format(sum(1.0/(3 * i + 1) for i in range(n)))
+print("d  ",'{:.2f}'.format(sum((3 * i) for i in range(5))))

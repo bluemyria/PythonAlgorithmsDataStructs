@@ -22,3 +22,14 @@ __pycache__/
 cpp_build
 
 epi_judge_java/java_build/
+
+# bluemyria
+/bluemyria_notes/ra/.vscode
+/bluemyria_notes/ra/venv
+
+/bluemyria_notes/comp_progr/*/*.cpp
+/bluemyria_notes/comp_progr/*/*.java
+/bluemyria_notes/comp_progr/*/*.py2
+
+/bluemyria_notes/ra/*.png
+
