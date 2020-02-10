@@ -1,9 +1,15 @@
 from test_framework import generic_test
 
-
+# 14.1 Test if a binary tree satisfies the BST property
+# Write a Program that takes as input a binary tree and checks if the tree satisfies the BST property
 def is_binary_tree_bst(tree, low_range=float('-inf'), high_range=float('inf')):
-    # TODO - you fill in here.
-    return True
+    # sos!! no 2 same values in the tree
+    if not tree:
+        return True
+    elif low_range > tree.data or tree.data > high_range:
+        return False
+    return (is_binary_tree_bst(tree.left, low_range, tree.data) and 
+            is_binary_tree_bst(tree.right, tree.data, high_range) )
 
 
 if __name__ == '__main__':

@@ -5,11 +5,18 @@ from test_framework.binary_tree_utils import must_find_node
 from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
 
-
+# 14.4. Compute the LCA in a BST
 # Input nodes are nonempty and the key at s is less than or equal to that at b.
 def find_LCA(tree, s, b):
-    # TODO - you fill in here.
-    return None
+
+    while tree.data < s.data or tree.data > b.data:
+        # Keep searching since tree is outside of [s, b].
+        while tree.data < s.data:
+            tree = tree.right  # LCA must be in tree's right child.
+        while tree.data > b.data:
+            tree = tree.left  # LCA must be in tree's left child.
+    # Now, s.data <= tree.data && tree.data <= b.data.
+    return tree
 
 
 @enable_executor_hook

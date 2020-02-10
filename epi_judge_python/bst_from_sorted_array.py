@@ -1,16 +1,25 @@
 import functools
 
+from bst_node import BstNode
+
 from test_framework import generic_test
 from test_framework.binary_tree_utils import (binary_tree_height,
                                               generate_inorder)
 from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
 
-
+# 14.8 Build a minimum height BST from a sorted array
 def build_min_height_bst_from_sorted_array(A):
-    # TODO - you fill in here.
-    return None
+    # SOS!!! check exactly the limits of the subarrays!
+    if not A:
+        return None
+    
+    head_idx = len(A) // 2
 
+    return BstNode(A[head_idx],
+                   build_min_height_bst_from_sorted_array(A[:head_idx]),
+                   build_min_height_bst_from_sorted_array(A[head_idx+1:]))
+                   
 
 @enable_executor_hook
 def build_min_height_bst_from_sorted_array_wrapper(executor, A):
