@@ -6,10 +6,24 @@ from test_framework.test_utils import enable_executor_hook
 
 NUM_PEGS = 3
 
-
+# 15.1 The Towers of Hanoi problem
 def compute_tower_hanoi(num_rings):
-    # TODO - you fill in here.
-    return []
+    def help_compute_tower_hanoi(nr_rings_to_move, from_peg, to_peg,
+                                 use_peg):
+        if nr_rings_to_move > 0:
+            help_compute_tower_hanoi(nr_rings_to_move - 1, from_peg, use_peg, 
+                                     to_peg)
+            pegs[to_peg].append(pegs[from_peg].pop())
+            result.append([from_peg, to_peg])
+            help_compute_tower_hanoi(nr_rings_to_move - 1, use_peg, to_peg,
+                                     from_peg)
+    
+    result = []
+    pegs =[list(reversed(range(1,num_rings+1)))
+           ] + [[] for _ in range(1, NUM_PEGS)]
+    help_compute_tower_hanoi(num_rings, 0, 1, 2)
+
+    return result
 
 
 @enable_executor_hook
