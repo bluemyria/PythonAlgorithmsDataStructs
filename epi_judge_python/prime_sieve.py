@@ -10,18 +10,22 @@ def generate_primes(n):
     # SOS!!! check if a number is prime
     if n < 2:
         return []
-    raw_primes = [False] * 2 + [True] * (n - 1)
-    for i in range(2, n+2):
-        if is_prime(i):
-            for j in range(2, n//i+1):
-                raw_primes[j*i] = False 
-        else:
-            for j in range(1, n//i+1):
-                raw_primes[j*i] = False 
-    return [i for i in range(len(raw_primes)) if raw_primes[i] == True ]
+    raw_primes = [0, 0] + [-1] * (n - 1)
+    for i in range(2, n+1):
+        if raw_primes[i] == -1: 
+            if is_prime(i):
+                raw_primes[i] = 1 
+                for j in range(2, n //i+1):
+                    raw_primes[j*i] = 0 
+            else:
+                for j in range(1, n//i+1):
+                    raw_primes[j*i] = 0 
+    return [i for i in range(len(raw_primes)) if raw_primes[i] == 1 ]
 
 def is_prime(m):
-    return all(m%i != 0 for i in range(2, int(math.sqrt(m)) ) )
+    # SOS!!! range needs +1 after the math.sqrt. 
+    # otherwise it doesn't check e.g. i=4 when m=4!!!
+    return all(m%i != 0 for i in range(2, int(math.sqrt(m))+1 ) )
 
 
 def old_is_prime(m):
