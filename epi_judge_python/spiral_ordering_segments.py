@@ -12,7 +12,7 @@ def matrix_in_spiral_order(square_matrix):
         return square_matrix[0]
     start = 0
     end = n-1
-    while end >= start:
+    while end > start:
         for i in range(start, end):
             mso.append(square_matrix[start][i])
         for i in range(start, end):
@@ -22,12 +22,12 @@ def matrix_in_spiral_order(square_matrix):
         for i in range(end, start, -1):
             mso.append(square_matrix[i][start])
         start += 1
-        end = n-1 - start
+        end -= 1
         print(start, end)
 
     # the square in the middle of the matrix is still missing if n -> odd 
     if n%2 == 1:
-        mso.append(square_matrix[start-1][start-1])        
+        mso.append(square_matrix[start][end])        
     #print(mso)
     return mso
 
