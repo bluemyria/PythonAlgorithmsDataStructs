@@ -1,9 +1,8 @@
 from test_framework import generic_test
 
-
+# 17. Greedy Algorithms BootCamp
 def has_two_sum(A, t):
-    # TODO - you fill in here.
-    return True
+    return any( t-x in A for x in A)
 
 
 if __name__ == '__main__':
