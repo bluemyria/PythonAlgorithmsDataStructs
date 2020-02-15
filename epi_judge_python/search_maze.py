@@ -10,10 +10,36 @@ WHITE, BLACK = range(2)
 
 Coordinate = collections.namedtuple('Coordinate', ('x', 'y'))
 
-
+# 18.1 Search a maze
+# Given a 2D array of black and white entries representing a maze with designated
+# entrance and exit points, find a path from the entrance to the exit, if one exists.
+# ex: [[0, 0, 0], [0, 1, 1], [0, 0, 0], [0, 1, 0]]	s: [2, 1]	t: [0, 2]	true]
 def search_maze(maze, s, e):
-    # TODO - you fill in here.
-    return []
+    # Perform DFS to find a feasible path.
+    def search_maze_helper(curr):
+        if not (0 <= curr.x < len(maze) and 
+                0 <= curr.y < len(maze[0]) and 
+                maze[curr.x][curr.y] == WHITE):
+            return False
+        path.append(curr)
+        maze[curr.x][curr.y] = BLACK
+        if curr == e:
+            return True
+
+        if any(
+                map(search_maze_helper, 
+                    map(Coordinate,
+                        (curr.x-1, curr.x+1, curr.x, curr.x),
+                        (curr.y, curr.y, curr.y-1, curr.y+1)
+                    ))):
+            return True
+        del path[-1]
+        return False
+
+    path = []
+    search_maze_helper(s)
+    #print(path)
+    return path
 
 
 def path_element_is_feasible(maze, prev, cur):
