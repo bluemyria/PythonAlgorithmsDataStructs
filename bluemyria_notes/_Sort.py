@@ -29,16 +29,15 @@ def selectionSort(alist):
         alist[max_idx], alist[i] = alist[i], alist[max_idx]
         print(alist)
 
-
-def insertionSort(arr):
-    for i in range(len(arr)):
-        curr_val = arr[i]
-        k = i
-        while k >= 1 and arr[k-1] > curr_val:
-            arr[k] = arr[k-1]
-            k -= 1
-        arr[k] = curr_val
-        print(arr)
+# O(n^2)
+def insertionSort(s):
+    print(s)
+    for j in range(1,len(s)):
+        i = j
+        while i > 0 and s[i] < s[i-1]:
+            s[i], s[i-1] = s[i-1], s[i]
+            i -= 1
+    print(s)
 
 
 def shellSort(arr):
