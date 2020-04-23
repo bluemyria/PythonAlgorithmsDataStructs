@@ -27,9 +27,17 @@ epi_judge_java/java_build/
 /bluemyria_notes/ra/.vscode
 /bluemyria_notes/ra/venv
 
+# /bluemyria_notes/comp_progr/
+
 /bluemyria_notes/comp_progr/*/*.cpp
 /bluemyria_notes/comp_progr/*/*.java
 /bluemyria_notes/comp_progr/*/*.py2
+/bluemyria_notes/comp_progr/*/*.py3
+/bluemyria_notes/comp_progr/*/*.py
 
 /bluemyria_notes/ra/*.png
 
+
+
+bluemyria_notes/PythonAutom/error_log.txt
+bluemyria_notes/PythonAutom/examplePhoneEmailDirectory.pdf
